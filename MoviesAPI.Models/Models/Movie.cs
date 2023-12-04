@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using MoviesAPI.Models.Models;
+
 namespace MoviesAPI.Models
 {
-    public class Movie
+    public class Movie : BaseModel
     {
         public Guid Id { get; set; }
-        public Guid CategoryId { get; set; }
-        public Category? Category { get; set; }
         [StringLength(1000)]
         public string? Name { get; set; }
         [StringLength(1000)]
@@ -14,5 +14,8 @@ namespace MoviesAPI.Models
         public int Year { get; set; }
         [StringLength(5000)]
         public string? Description { get; set; }
+        [StringLength(1000)]
+        public string? Picture { get; set; }
+        public List<Category> Categories { get; set; } = new();
     }
 }
