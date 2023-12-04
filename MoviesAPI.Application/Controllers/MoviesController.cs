@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 
 using MoviesAPI.Core.Interfaces;
 using MoviesAPI.Models.DTO;
+using MoviesAPI.Models.RequestModels;
 
 namespace MoviesAPI.Application.Controllers
 {
@@ -20,10 +21,10 @@ namespace MoviesAPI.Application.Controllers
             _getMoviesQuery = getMoviesQuery;
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<MovieDTO>> Get()
+        [HttpPost]
+        public async Task<IEnumerable<MovieDTO>> Post([FromBody] GetMoviesRequestModel? requestParams = null)
         {
-            return await _getMoviesQuery.Run();
+            return await _getMoviesQuery.Run(requestParams);
         }
     }
 }

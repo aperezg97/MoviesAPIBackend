@@ -16,6 +16,7 @@ namespace MoviesAPI.Models
         public string? Description { get; set; }
         [StringLength(1000)]
         public string? Picture { get; set; }
+        public List<MovieCategory> MovieCategories { get; set; } = new();
         public List<Category> Categories { get; set; } = new();
     }
 }
