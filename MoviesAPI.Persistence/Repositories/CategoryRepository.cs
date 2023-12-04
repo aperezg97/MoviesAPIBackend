@@ -6,18 +6,18 @@ using MoviesAPI.Persistence.Interfaces;
 
 namespace MoviesAPI.Persistence.Repositories
 {
-    public class MoviesRepository : IMoviesRepository
+    public class CategoryRepository : ICategoryRepository
     {
         private readonly MovieDbContext _dbContext;
 
-        public MoviesRepository(MovieDbContext dbContext)
+        public CategoryRepository(MovieDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<List<Movie>> GetAll()
+        public async Task<List<Category>> GetAll()
         {
-            return await _dbContext.Movies.Include(x => x.Categories).OrderByDescending(x => x.Year).ThenBy(x => x.Title).ToListAsync();
+            return await _dbContext.Categories.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

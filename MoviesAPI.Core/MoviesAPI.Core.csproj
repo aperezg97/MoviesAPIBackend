@@ -10,8 +10,4 @@
     <ProjectReference Include="..\MoviesAPI.Persistence\MoviesAPI.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\NewFolder\" />
-  </ItemGroup>
-
 </Project>

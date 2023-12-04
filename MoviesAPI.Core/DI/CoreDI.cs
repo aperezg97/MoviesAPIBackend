@@ -11,6 +11,7 @@ namespace MoviesAPI.Core.DI
         public static void AddCoreServices(this IServiceCollection service)
         {
             service.AddScoped<IGetMoviesQuery, GetMoviesQuery>();
+            service.AddScoped<IGetCategoriesQuery, GetCategoriesQuery>();
         }
     }
 }
