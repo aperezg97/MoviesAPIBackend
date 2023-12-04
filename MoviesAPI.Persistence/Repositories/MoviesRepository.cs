@@ -48,31 +48,6 @@ namespace MoviesAPI.Persistence.Repositories
              .OrderByDescending(x => x.Year)
                 .ThenBy(x => x.Title)
                 .ToListAsync();
-
-            var query = _dbContext.Movies.AsQueryable();
-
-            if (!string.IsNullOrEmpty(requestParams.FreeTextSearch))
-            {
-                query = query
-                    .Where(m => EF.Functions.Like(m.Title, requestParams.FreeTextSearch))
-                    .Where(m => EF.Functions.Like(m.Name, requestParams.FreeTextSearch))
-                    .Where(m => EF.Functions.Like(m.Description, requestParams.FreeTextSearch));
-            }
-            if (requestParams.Categories != null && requestParams.Categories.Count > 0)
-            {
-                query = query
-                    .Include(x => x.Categories.Where(c => requestParams.Categories.Contains(c.Id)));
-            }
-            else
-            {
-                query = query
-                    .Include(x => x.Categories);
-            }
-
-            return await query
-                .OrderByDescending(x => x.Year)
-                .ThenBy(x => x.Title)
-                .ToListAsync();
         }
     }
 }
