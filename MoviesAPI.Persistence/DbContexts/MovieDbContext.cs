@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Emit;
 
 using Microsoft.EntityFrameworkCore;
 
 using MoviesAPI.Models;
 using MoviesAPI.Models.Models;
+using MoviesAPI.Persistence.DbContexts;
 
 namespace MoviesAPI.Persistence.DbContexts
 {
@@ -44,6 +46,8 @@ namespace MoviesAPI.Persistence.DbContexts
 
             modelBuilder.Entity<MovieCategory>().Property(b => b.InsertDate).HasDefaultValueSql("getdate()").ValueGeneratedOnAdd();
             modelBuilder.Entity<MovieCategory>().Property(b => b.UpdateDate).ValueGeneratedOnUpdate();
+
+            modelBuilder.Seed();
         }
     }
 }
